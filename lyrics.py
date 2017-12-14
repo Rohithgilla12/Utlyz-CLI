@@ -30,16 +30,16 @@ def get_url(req):
 
 def cli(lyr):
 	if(lyr):
-        s=requests.Session() #It is having so many redirects so use of session is helpful or we get an error
-        s.headers['User-Agent'] = 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_9_2) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/34.0.1847.131 Safari/537.36' #Headers
-        r=s.get(get_url(req)) #Session get similarl to requests.get()
-        soup=BeautifulSoup(r.content,'html.parser')
-        temp=str(soup.findAll(class_='row'))
-        temp=temp.replace('\\n','')
-        temp=temp.split('<br/>') #Modifications of source code to get our required outcome
-        print temp[2].split('\\r')[-1]
-        for i in temp:	#Loop is for modifying each string so that no junk appears except \n
-        	if '<' in i:
-        	    pass
-        	else:
-        	    print i
+		s=requests.Session() #It is having so many redirects so use of session is helpful or we get an error
+		s.headers['User-Agent'] = 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_9_2) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/34.0.1847.131 Safari/537.36' #Headers
+		r=s.get(get_url(req)) #Session get similarl to requests.get()
+		soup=BeautifulSoup(r.content,'html.parser')
+		temp=str(soup.findAll(class_='row'))
+		temp=temp.replace('\\n','')
+		temp=temp.split('<br/>') #Modifications of source code to get our required outcome
+		print temp[2].split('\\r')[-1]
+		for i in temp:	#Loop is for modifying each string so that no junk appears except \n
+			if '<' in i:
+			    pass
+			else:
+			    print i
