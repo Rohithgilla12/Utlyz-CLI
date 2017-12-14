@@ -2,28 +2,27 @@ import requests
 from bs4 import BeautifulSoup
 import click
 
-
 url='https://search.azlyrics.com/search.php?q='
 req=raw_input('Give me the name of the song: ')
 
 def get_url(req):
-    '''
-    This function is used to get the required url for the song
-    '''
-    req_url=url+req.replace(' ','+')
-    r=requests.get(req_url)
-    soup=BeautifulSoup(r.content,'html.parser')
-    temp=soup.findAll(class_='text-left visitedlyr')     #For the link to the song lyrics
-    for i in temp:
-        i=str(i)
-        i=i.split('href="')[1]
-        i=i.split('"')[0]
-        if '/lyrics/' in i:
-            song_url=i
-            #print song_url
-            break
- #Modifications done to get it compatible with requests module
-    return song_url
+        '''
+        This function is used to get the required url for the song
+        '''
+        req_url=url+req.replace(' ','+')
+        r=requests.get(req_url)
+        soup=BeautifulSoup(r.content,'html.parser')
+        temp=soup.findAll(class_='text-left visitedlyr')     #For the link to the song lyrics
+        for i in temp:
+            i=str(i)
+            i=i.split('href="')[1]
+            i=i.split('"')[0]
+            if '/lyrics/' in i:
+                song_url=i
+                #print song_url
+                break
+     #Modifications done to get it compatible with requests module
+        return song_url
 
 @click.command()
 
