@@ -1,0 +1,6 @@
+import requests
+from bs4 import BeautifulSoup
+url='https://search.azlyrics.com/search.php?q='
+req=raw_input('Give me the name of the song')   
+req_url=url+req.replace(' ','+')
+
